@@ -55,7 +55,7 @@ UniqueData LoadDataFromTypedData(Dtype dtype, const void* data, int64_t num_elem
             UniqueData p(std::malloc(num_elements * sizeof(chainerx::Float16)), &std::free);
             auto out_base_ptr = static_cast<chainerx::Float16*>(p.get());
             for (int i = 0; i < num_elements; ++i) {
-                out_base_ptr[i] = chainerx::Float16(reinterpret_cast<const From*>(data)[i]);
+                out_base_ptr[i] = chainerx::Float16(static_cast<int64_t>(const_cast<From*>(reinterpret_cast<const From*>(data))[i]));
             }
             return p;
         }
