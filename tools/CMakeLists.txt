@@ -111,10 +111,10 @@ endif()
 if (${CHAINER_COMPILER_ENABLE_PYTHON})
   include_directories(${PYTHON_INCLUDE_DIRS})
 
-  add_library(run_onnx_core.so MODULE run_onnx_core.cc)
-  set_hidden_(run_onnx_core.so)
+  add_library(run_onnx_core.dylib MODULE run_onnx_core.cc)
+  set_hidden_(run_onnx_core.dylib)
 
-  target_link_libraries(run_onnx_core.so
+  target_link_libraries(run_onnx_core.dylib
     PRIVATE
     run_onnx_lib
     chainer_compiler_tools
@@ -122,6 +122,7 @@ if (${CHAINER_COMPILER_ENABLE_PYTHON})
     chainer_compiler_configs
     chainer_compiler_runtime
     chainer_compiler_common
+    ${CHAINER_COMPILER_LIBRARIES}
     ${CHAINER_COMPILER_CHAINERX_LIBRARIES}
     onnx
     onnx_proto
@@ -133,16 +134,16 @@ if (${CHAINER_COMPILER_ENABLE_PYTHON})
     ${CHAINER_COMPILER_CUDA_LIBRARIES}
     absl::variant
     )
-  set_target_properties(run_onnx_core.so
+  set_target_properties(run_onnx_core.dylib
     PROPERTIES
     PREFIX "${PYTHON_MODULE_PREFIX}"
     SUFFIX "${PYTHON_MODULE_SUFFIX}")
 
   if(${CHAINER_COMPILER_ENABLE_OPENCV})
-    add_library(train_imagenet_core.so MODULE train_imagenet_core.cc)
-    set_hidden_(train_imagenet_core.so)
+    add_library(train_imagenet_core.dylib MODULE train_imagenet_core.cc)
+    set_hidden_(train_imagenet_core.dylib)
 
-    target_link_libraries(train_imagenet_core.so
+    target_link_libraries(train_imagenet_core.dylib
       PRIVATE
       train_imagenet_lib
       chainer_compiler_tools
@@ -151,6 +152,7 @@ if (${CHAINER_COMPILER_ENABLE_PYTHON})
       chainer_compiler_runtime
       chainer_compiler_common
       feeder
+      ${CHAINER_COMPILER_LIBRARIES}
       ${CHAINER_COMPILER_CHAINERX_LIBRARIES}
       onnx
       onnx_proto
@@ -163,7 +165,7 @@ if (${CHAINER_COMPILER_ENABLE_PYTHON})
       ${OpenCV_LIBS}
       absl::variant
       )
-    set_target_properties(train_imagenet_core.so
+    set_target_properties(train_imagenet_core.dylib
       PROPERTIES
       PREFIX "${PYTHON_MODULE_PREFIX}"
       SUFFIX "${PYTHON_MODULE_SUFFIX}")

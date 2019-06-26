@@ -4,14 +4,15 @@ include_directories(${CHAINER_COMPILER_ROOT_DIR}/third_party/abseil)
 include_directories(${PYTHON_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/..)
 
-add_library(_chainer_compiler_core.so MODULE chainer_compiler_core.cc)
-target_link_libraries(_chainer_compiler_core.so
+add_library(_chainer_compiler_core.dylib MODULE chainer_compiler_core.cc)
+target_link_libraries(_chainer_compiler_core.dylib
   PRIVATE
   chainer_compiler_tools
   chainer_compiler_compiler
   chainer_compiler_runtime
   chainer_compiler_common
   chainer_compiler_configs
+  ${CHAINER_COMPILER_LIBRARIES}
   ${CHAINER_COMPILER_CHAINERX_LIBRARIES}
   onnx
   onnx_proto
@@ -23,8 +24,8 @@ target_link_libraries(_chainer_compiler_core.so
   ${CHAINER_COMPILER_CUDA_LIBRARIES}
   absl::variant
   )
-set_target_properties(_chainer_compiler_core.so
+set_target_properties(_chainer_compiler_core.dylib
     PROPERTIES
     PREFIX "${PYTHON_MODULE_PREFIX}"
     SUFFIX "${PYTHON_MODULE_SUFFIX}")
-set_hidden_(_chainer_compiler_core.so)
+set_hidden_(_chainer_compiler_core.dylib)

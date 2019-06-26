@@ -200,6 +200,7 @@ add_custom_target(large_tests)
 
 if(${CHAINER_COMPILER_ENABLE_PYTHON})
   include_directories(${CMAKE_CURRENT_BINARY_DIR}/third_party/chainer/chainerx_cc/pybind11/include)
+  set(CHAINER_COMPILER_LIBRARIES "/Users/tanakad/.pyenv/versions/3.6.8/lib/libpython3.6m.dylib")
   add_subdirectory(chainer_compiler_cc)
 endif()
 

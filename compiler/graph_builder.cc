@@ -101,6 +101,7 @@ template Value* GraphBuilder::Const(const Type& type, const std::vector<double>&
 template Value* GraphBuilder::Const(const Type& type, const std::vector<float>& data, Value* value);
 template Value* GraphBuilder::Const(const Type& type, const std::vector<int>& data, Value* value);
 template Value* GraphBuilder::Const(const Type& type, const std::vector<long>& data, Value* value);
+template Value* GraphBuilder::Const(const Type& type, const std::vector<long long>& data, Value* value);
 
 Value* GraphBuilder::Param(const chainerx::Array& ary) {
     const std::string& name = GenName();

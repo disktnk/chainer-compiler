@@ -247,6 +247,7 @@ template Tensor::Tensor(const std::string& name, Dtype dtype, const std::vector<
 template Tensor::Tensor(const std::string& name, Dtype dtype, const std::vector<int64_t>& dims, const std::vector<float>& data);
 template Tensor::Tensor(const std::string& name, Dtype dtype, const std::vector<int64_t>& dims, const std::vector<int>& data);
 template Tensor::Tensor(const std::string& name, Dtype dtype, const std::vector<int64_t>& dims, const std::vector<long>& data);
+template Tensor::Tensor(const std::string& name, Dtype dtype, const std::vector<int64_t>& dims, const std::vector<long long>& data);
 
 Tensor::Tensor(const std::string& name, const Tensor& t) : data_(t.data_), name_(name), doc_string_(t.doc_string_) {
 }
