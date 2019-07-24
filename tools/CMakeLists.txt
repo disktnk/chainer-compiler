@@ -132,6 +132,7 @@ if (${CHAINER_COMPILER_ENABLE_PYTHON})
     chainer_compiler_configs
     chainer_compiler_runtime
     chainer_compiler_common
+    ${CHAINER_COMPILER_LIBRARIES}
     ${CHAINER_COMPILER_CHAINERX_LIBRARIES}
     onnx
     onnx_proto
@@ -162,6 +163,7 @@ if (${CHAINER_COMPILER_ENABLE_PYTHON})
       chainer_compiler_runtime
       chainer_compiler_common
       feeder
+      ${CHAINER_COMPILER_LIBRARIES}
       ${CHAINER_COMPILER_CHAINERX_LIBRARIES}
       onnx
       onnx_proto
