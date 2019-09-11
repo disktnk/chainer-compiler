@@ -131,7 +131,7 @@ endif()
 add_subdirectory(third_party/chainer/chainerx_cc EXCLUDE_FROM_ALL)
 
 if(NOT ("${CHAINER_COMPILER_PREBUILT_CHAINERX_DIR}" STREQUAL "OFF"))
-  set(CHAINER_COMPILER_CHAINERX_LIBRARIES "${CHAINER_COMPILER_PREBUILT_CHAINERX_DIR}/libchainerx.so")
+  set(CHAINER_COMPILER_CHAINERX_LIBRARIES "${CHAINER_COMPILER_PREBUILT_CHAINERX_DIR}/libchainerx.dylib")
 else()
   set(CHAINER_COMPILER_CHAINERX_LIBRARIES "chainerx")
 endif()
@@ -276,6 +276,7 @@ set(CHAINER_COMPILER_DEPENDENCY_LIBRARIES
   absl::variant
   absl::optional
   ${OpenCV_LIBS}
+  ${PYTHON_LIBRARY}
   )
 
 add_custom_target(large_tests)
